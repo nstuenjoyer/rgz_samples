@@ -38,25 +38,8 @@ const Sample_types = sequelize.define('sample_types', {
     type: { type: DataTypes.STRING, unique: true, allowNull: false }
 })
 
-const State_standart_list = sequelize.define('state_standart_list', {
-    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 
-})
 
-const State_standart = sequelize.define('state_standart', {
-    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    name: { type: DataTypes.STRING, unique: true, allowNull: false },
-    body: { type: DataTypes.STRING, allowNull: false }
-})
-
-const Standart_types = sequelize.define('standart_types', {
-    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    type: { type: DataTypes.STRING, unique: true, allowNull: false }
-})
-
-const UserSampleList = sequelize.define('user_sample_list', {
-    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true }
-})
 
 User.hasOne(List_doc_samples)
 List_doc_samples.belongsTo(User)
@@ -76,14 +59,7 @@ Doc_sample.belongsTo(Sample_types)
 Lesson.hasMany(Doc_sample)
 Doc_sample.belongsTo(Lesson)
 
-State_standart_list.belongsToMany(User, { through: UserSampleList })
-User.belongsToMany(State_standart_list, { through: UserSampleList })
 
-State_standart_list.hasMany(State_standart)
-State_standart.belongsTo(State_standart_list)
-
-Standart_types.hasMany(State_standart)
-State_standart.belongsTo(Standart_types)
 
 module.exports = {
     User,
@@ -92,9 +68,5 @@ module.exports = {
     Doc_sample,
     University,
     Sample_types,
-    State_standart_list,
-    State_standart,
-    Standart_types,
-    UserSampleList,
     Lesson
 }

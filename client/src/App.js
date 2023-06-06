@@ -8,18 +8,20 @@ import { check } from "./http/userAPI";
 import { Spinner } from "react-bootstrap";
 const App = observer(() => {
   const { user } = useContext(Context)
-  const [loading, setLoading] = useState(true)
+
 
   useEffect(() => {
-    check().then(data => {
-      user.setUser(true)
-      user.setIsAuth(true)
-    }).finally(() => setLoading(false))
+    if ((localStorage.getItem('token') !== null)) {
+
+      check().then(data => {
+        user.setUser(true)
+        user.setIsAuth(true)
+      })
+    }
+    return;
   }, [])
 
-  if (loading) {
-    return <Spinner animation={"grow"} />
-  }
+
 
   return (
     <BrowserRouter>

@@ -11,7 +11,7 @@ const Pages = observer(() => {
         pages.push(i + 1)
     }
     return (
-        <Pagination className="mt-5" style={{ paddingLeft: 12 }}>
+        <Pagination className="mt-4" style={{ paddingLeft: 12 }}>
             {
                 pages.map(page =>
                     <Pagination.Item

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import { Card, Col, Container, Form, Row } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Card, Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import SelectBar from "../components/SelectBar";
 import SampleList from "../components/SampleList";
 import { observer } from "mobx-react-lite";
@@ -9,7 +9,6 @@ import Pages from "../components/Pages";
 
 const DocxSamples = observer(() => {
     const { sample } = useContext(Context)
-
     useEffect(() => {
         fetchUniversities().then(data => sample.setUniversities(data))
         fetchLessons().then(data => sample.setLessons(data))
@@ -27,6 +26,8 @@ const DocxSamples = observer(() => {
         })
     }, [sample.page, sample.selectTypes, sample.selectLessons, sample.selectUniversity])
 
+
+
     return (
         <Container className="mt-2 " >
             <Row className="d-flex justify-content-center  "
@@ -34,12 +35,13 @@ const DocxSamples = observer(() => {
             >
                 <Col md={3}>
                     <SelectBar />
+                    <Pages ></Pages>
                 </Col>
-                {(sample.totalCount != 0) ?
+                {(sample.totalCount !== 0) ?
                     <Col md={9}>
 
                         <SampleList />
-                        <Pages ></Pages>
+
                     </Col>
                     :
                     <Col md={9}>

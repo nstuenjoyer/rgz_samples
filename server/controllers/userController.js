@@ -5,13 +5,16 @@ const jwt = require('jsonwebtoken')
 const { User, List_doc_samples } = require('../models/models')
 
 const generateJwt = (id, email, role) => {
-    return jwt.sign({ id, email, role },
+    (token = jwt.sign({ id, email, role },
         process.env.SECRET_KEY,
         { expiresIn: '24h' }
-    )
+    ))
+    return token
 }
 
 class UserController {
+
+
     async registration(req, res, next) {
         const { email, password, role } = req.body
         if (!email || !password) {
@@ -43,9 +46,11 @@ class UserController {
     }
 
     async check(req, res, next) {
+        console.log(req.user.id)
         const token = generateJwt(req.user.id, req.user.email, req.user.role)
         return res.json({ token })
     }
+
 }
 
 module.exports = new UserController

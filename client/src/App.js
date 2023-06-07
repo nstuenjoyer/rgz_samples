@@ -12,7 +12,6 @@ const App = observer(() => {
 
   useEffect(() => {
     if ((localStorage.getItem('token') !== null)) {
-
       check().then(data => {
         user.setUser(true)
         user.setIsAuth(true)

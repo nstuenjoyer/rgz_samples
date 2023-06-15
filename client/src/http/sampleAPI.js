@@ -9,6 +9,7 @@ export const createUniversitet = async (university) => {
 
 export const fetchUniversities = async () => {
     const { data } = await $host.get('api/university')
+
     return data
 }
 
@@ -24,6 +25,7 @@ export const createLesson = async (lesson) => {
 
 export const fetchLessons = async () => {
     const { data } = await $host.get('api/lesson')
+
     return data
 }
 export const deleteLessons = async (id) => {
@@ -38,6 +40,7 @@ export const createType = async (type) => {
 
 export const fetchTypes = async () => {
     const { data } = await $host.get('api/sampletypes')
+
     return data
 }
 
@@ -54,12 +57,13 @@ export const createSample = async (sample) => {
 
 export const fetchSamples = async (sampleTypeId, LessonId, universityId, page, limit) => {
     const { data } = await $host.get('api/docsample', { params: { sampleTypeId, LessonId, universityId, page, limit } })
-    console.log(data)
+
     return data
 }
 
 export const deleteSample = async (id, docx_sample) => {
     const { data } = await $authHost.delete('api/docsample', { params: { id, docx_sample } })
+    console.log(data)
     return data
 }
 

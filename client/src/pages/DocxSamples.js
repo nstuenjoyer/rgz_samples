@@ -9,22 +9,17 @@ import Pages from "../components/Pages";
 
 const DocxSamples = observer(() => {
     const { sample } = useContext(Context)
+
+
     useEffect(() => {
         fetchUniversities().then(data => sample.setUniversities(data))
         fetchLessons().then(data => sample.setLessons(data))
         fetchTypes().then(data => sample.setTypes(data))
-        fetchSamples(null, null, null, 1, 9).then(data => {
-            sample.setSamples(data.rows)
-            sample.setTotalCount(data.count)
-        })
-    }, [sample.delete])
-
-    useEffect(() => {
         fetchSamples(sample.selectTypes.id, sample.selectLessons.id, sample.selectUniversity.id, sample.page, 9).then(data => {
             sample.setSamples(data.rows)
             sample.setTotalCount(data.count)
         })
-    }, [sample.page, sample.selectTypes, sample.selectLessons, sample.selectUniversity])
+    }, [sample.page, sample.selectTypes, sample.selectLessons, sample.selectUniversity, sample.delete])
 
 
 

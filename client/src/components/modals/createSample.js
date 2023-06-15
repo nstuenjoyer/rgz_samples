@@ -125,7 +125,7 @@ const CreateSample = observer(({ show, onHide }) => {
                             <div className="pl-2" style={{ color: "red" }}>{universityErr}</div>
                         }
                     </Dropdown>
-                    <Form.Control value={name} onChange={e => setName(e.target.value)} className="mt-2" placeholder="Введите название шаблона" />
+                    <Form.Control value={name} onChange={e => setName(e.target.value)} className="mt-2" maxLength="40" placeholder="Введите название шаблона" />
                     {nameErr.length === 0 ?
                         <div></div>
                         :

@@ -66,7 +66,7 @@ class DocSampleController {
                 console.log("Файл удалён");
             }
         });
-        return res.json(docSamples)
+        return res.status(200).json({ message: "пользователь удален" })
     }
 }
 

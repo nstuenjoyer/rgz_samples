@@ -5,6 +5,7 @@ import { Card, Dropdown } from "react-bootstrap";
 
 const SelectBar = observer(() => {
     const { sample } = useContext(Context)
+
     return (
         <Card className="mt-4 p-2" >
             <Dropdown className="mt-2" >

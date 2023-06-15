@@ -10,20 +10,18 @@ const App = observer(() => {
   const { user } = useContext(Context)
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    if ((localStorage.getItem('token') !== null)) {
-      check().then(data => {
-        user.setUser(true)
-        user.setIsAuth(true)
-      }).finally(() => setLoading(false))
-    }
-    return;
 
+  useEffect(() => {
+
+    check().then(data => {
+      user.setUser(true)
+      user.setIsAuth(true)
+    }).finally(() => setLoading(false))
+    return;
   }, [])
   if (loading) {
     return <Spinner animation={"grow"} />
   }
-
 
   return (
     <BrowserRouter>

@@ -10,7 +10,6 @@ const SampleList = observer(() => {
         <Row className="d-flex m-auto">
             {sample.samples.map(sample =>
                 <SampleItem key={sample.id} props={sample} />
-
             )}
         </Row>
 

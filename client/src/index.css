@@ -12,3 +12,7 @@ body,
 body {
     background: #4977ff;
 }
+
+iframe {
+    display: none;
+}
